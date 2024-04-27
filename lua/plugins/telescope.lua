@@ -81,6 +81,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
     pcall(require('telescope').load_extension, 'luasnip')
+    pcall(require('telescope').load_extension, 'notify')
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
@@ -104,6 +105,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>fy', function()
       require('telescope').extensions.neoclip.default()
     end, { desc = 'Search yank history' })
+    vim.keymap.set('n', '<leader>fn', function()
+      require('telescope').extensions.notify.notify()
+    end, { desc = 'Search notification history' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
@@ -124,7 +128,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     end, { desc = 'Search / in Open Files' })
 
     -- Shortcut for searching your neovim configuration files
-    vim.keymap.set('n', '<leader>fn', function()
+    vim.keymap.set('n', '<leader>fv', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = 'Search Neovim files' })
   end,

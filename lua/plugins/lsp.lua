@@ -141,13 +141,15 @@ return { -- LSP Configuration & Plugins
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
-      tsserver = {},
+      tsserver = {
+        capabilities = capabilities,
+      },
       --
 
       lua_ls = {
         -- cmd = {...},
         -- filetypes { ...},
-        -- capabilities = {},
+        capabilities = capabilities,
         settings = {
           Lua = {
             runtime = { version = 'LuaJIT' },

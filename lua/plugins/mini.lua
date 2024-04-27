@@ -16,7 +16,11 @@ return { -- Collection of various small independent plugins/modules
     -- - sr)'  - [S]urround [R]eplace [)] [']
     require('mini.surround').setup()
 
-    require('mini.comment').setup()
+    require('mini.comment').setup {
+      mappings = {
+        comment_line = 'gcl',
+      },
+    }
 
     -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,
