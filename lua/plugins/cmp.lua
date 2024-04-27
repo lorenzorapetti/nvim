@@ -27,13 +27,19 @@ return { -- Autocompletion
     --    you can use this plugin to help you. It even has snippets
     --    for various frameworks/libraries/etc. but you will have to
     --    set up the ones that are useful for you.
-    -- 'rafamadriz/friendly-snippets',
+    'rafamadriz/friendly-snippets',
   },
   config = function()
     -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
-    luasnip.config.setup {}
+    luasnip.config.setup {
+      -- Update on every change so that the snippet updates
+      -- as you type
+      update_events = { 'TextChanged', 'TextChangedI' },
+    }
+
+    require('luasnip.loaders.from_vscode').lazy_load()
 
     cmp.setup {
       snippet = {
@@ -56,7 +62,17 @@ return { -- Autocompletion
         -- Accept ([y]es) the completion.
         --  This will auto-import if your LSP supports it.
         --  This will expand snippets if the LSP sent a snippet.
-        ['<C-y>'] = cmp.mapping.confirm { select = true },
+        ['<C-y>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            if luasnip.expandable() then
+              luasnip.expand()
+            else
+              cmp.confirm { select = true }
+            end
+          else
+            fallback()
+          end
+        end),
 
         -- Manually trigger a completion from nvim-cmp.
         --  Generally you don't need this, because nvim-cmp will display
@@ -76,11 +92,18 @@ return { -- Autocompletion
             luasnip.expand_or_jump()
           end
         end, { 'i', 's' }),
+
         ['<C-h>'] = cmp.mapping(function()
           if luasnip.locally_jumpable(-1) then
             luasnip.jump(-1)
           end
         end, { 'i', 's' }),
+
+        ['<C-k>'] = cmp.mapping(function()
+          if luasnip.choice_active() then
+            luasnip.change_choice(1)
+          end
+        end),
       },
       sources = {
         { name = 'nvim_lsp' },

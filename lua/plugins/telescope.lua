@@ -31,6 +31,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
     --  If you already have a Nerd Font, or terminal set up with fallback fonts
     --  you can enable this
     { 'nvim-tree/nvim-web-devicons' },
+
+    { 'benfowler/telescope-luasnip.nvim' },
+
+    { 'AckslD/nvim-neoclip.lua' },
   },
   config = function()
     -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -71,9 +75,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
       },
     }
 
+    require('neoclip').setup()
+
     -- Enable telescope extensions, if they are installed
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
+    pcall(require('telescope').load_extension, 'luasnip')
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
@@ -91,6 +98,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = 'Search Resume' })
     vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = 'Search Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find existing buffers' })
+    vim.keymap.set('n', '<leader>fi', function()
+      require('telescope').extensions.luasnip.luasnip {}
+    end, { desc = 'Search snippets' })
+    vim.keymap.set('n', '<leader>fy', function()
+      require('telescope').extensions.neoclip.default()
+    end, { desc = 'Search yank history' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()

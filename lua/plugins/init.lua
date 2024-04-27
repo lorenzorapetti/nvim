@@ -60,7 +60,13 @@ return {
     opts = {
       restriction_mode = 'hint',
       -- Reenable arrow keys cause i have a layer that replicates hjkl
-      disabled_keys = {},
+      disabled_keys = {
+        ['<Up>'] = {},
+        ['<Down>'] = {},
+        ['<Left>'] = {},
+        ['<Right>'] = {},
+      },
+      disabled_filetypes = { 'qf', 'netrw', 'NvimTree', 'lazy', 'mason', 'oil', 'neo-tree' },
     },
   },
 }
