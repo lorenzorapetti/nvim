@@ -144,7 +144,21 @@ return { -- LSP Configuration & Plugins
       tsserver = {
         capabilities = capabilities,
       },
-      --
+
+      eslint = {
+        settings = {
+          workingDirectories = { mode = 'auto' },
+        },
+      },
+
+      tailwindcss = {
+        -- exclude a filetype from the default_config
+        filetypes_exclude = { 'markdown' },
+        -- add additional filetypes to the default_config
+        filetypes_include = {},
+        -- to fully override the default_config, change the below
+        -- filetypes = {}
+      },
 
       lua_ls = {
         -- cmd = {...},
@@ -187,6 +201,10 @@ return { -- LSP Configuration & Plugins
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format lua code
+      'eslint',
+      'tsserver',
+      'prettierd',
+      'tailwindcss',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

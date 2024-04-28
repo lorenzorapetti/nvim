@@ -85,11 +85,15 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
+    vim.keymap.set('n', '<leader>:', '<cmd>Telescope command_history<cr>', { desc = 'Command History' })
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Search Help' })
     vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Search Keymaps' })
     vim.keymap.set('n', '<leader>ff', function()
       builtin.find_files()
     end, { desc = 'Find Files' })
+    vim.keymap.set('n', '<leader>fa', function()
+      builtin.find_files { hidden = true }
+    end, { desc = 'Find All Files (Including Hidden Ones)' })
     vim.keymap.set('n', '<leader><leader>', builtin.git_files, { desc = 'Search Git Files' })
     vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = 'Search Select Telescope' })
     -- Searches for all the occurrences of the word under the cursor
@@ -108,6 +112,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>fn', function()
       require('telescope').extensions.notify.notify()
     end, { desc = 'Search notification history' })
+
+    -- git
+    vim.keymap.set('n', '<leader>gc', '<cmd>Telescope git_commits<cr>', { desc = 'Search Commits' })
+    vim.keymap.set('n', '<leader>gs', '<cmd>Telescope git_status<cr>', { desc = 'Search Git Status' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()

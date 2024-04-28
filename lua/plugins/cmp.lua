@@ -28,6 +28,8 @@ return { -- Autocompletion
     --    for various frameworks/libraries/etc. but you will have to
     --    set up the ones that are useful for you.
     'rafamadriz/friendly-snippets',
+
+    { 'roobert/tailwindcss-colorizer-cmp.nvim', config = true },
   },
   config = function()
     -- See `:help cmp`
@@ -110,6 +112,10 @@ return { -- Autocompletion
         { name = 'luasnip' },
         { name = 'path' },
       },
+    }
+
+    cmp.config.formatting = {
+      format = require('tailwindcss-colorizer-cmp').formatter,
     }
   end,
 }
