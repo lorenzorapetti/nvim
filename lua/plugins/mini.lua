@@ -21,6 +21,11 @@ return { -- Collection of various small independent plugins/modules
       mappings = {
         comment_line = 'gcl',
       },
+      options = {
+        custom_commentstring = function()
+          return require('ts_context_commentstring.internal').calculate_commentstring() or vim.bo.commentstring
+        end,
+      },
     }
 
     vim.keymap.set('n', '<leader>up', function()
