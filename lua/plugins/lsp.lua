@@ -12,11 +12,6 @@ return { -- LSP Configuration & Plugins
 
     {
       'pmizio/typescript-tools.nvim',
-      opts = {
-        settings = {
-          complete_function_calls = true,
-        },
-      },
     },
   },
   config = function()
@@ -151,7 +146,7 @@ return { -- LSP Configuration & Plugins
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
       tsserver = {
-        capabilities = capabilities,
+        enabled = false,
       },
 
       eslint = {
@@ -211,7 +206,6 @@ return { -- LSP Configuration & Plugins
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format lua code
       'eslint',
-      'tsserver',
       'prettierd',
       'tailwindcss',
     })
@@ -227,6 +221,13 @@ return { -- LSP Configuration & Plugins
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
           require('lspconfig')[server_name].setup(server)
         end,
+      },
+    }
+
+    require('typescript-tools').setup {
+      settings = {
+        complete_function_calls = true,
+        expose_as_code_action = 'all',
       },
     }
   end,
