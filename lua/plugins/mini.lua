@@ -19,7 +19,7 @@ return { -- Collection of various small independent plugins/modules
 
     require('mini.comment').setup {
       mappings = {
-        comment_line = 'g;',
+        -- comment_line = 'g;',
       },
       options = {
         custom_commentstring = function()

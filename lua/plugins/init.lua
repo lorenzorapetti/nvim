@@ -75,6 +75,12 @@ return {
     dependencies = { 'MunifTanjim/nui.nvim', 'plenary' },
     opts = {
       restriction_mode = 'hint',
+      restricted_keys = {
+        ['h'] = {},
+        ['j'] = {},
+        ['k'] = {},
+        ['l'] = {},
+      },
       -- Reenable arrow keys cause i have a layer that replicates hjkl
       disabled_keys = {
         ['<Up>'] = {},
