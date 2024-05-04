@@ -28,6 +28,7 @@ return { -- Useful plugin to show you pending keybinds.
       ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
       ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
       ['<leader>u'] = { name = 'Toggle Configs', _ = 'which_key_ignore' },
+      ['<leader>t'] = { name = '[T]erminal', _ = 'which_key_ignore' },
     }
   end,
 }
