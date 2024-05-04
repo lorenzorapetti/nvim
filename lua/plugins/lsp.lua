@@ -208,6 +208,7 @@ return { -- LSP Configuration & Plugins
       'eslint',
       'prettierd',
       'tailwindcss',
+      'rust_analyzer',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
