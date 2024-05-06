@@ -17,17 +17,19 @@ return {
     require('neo-tree').setup {
       close_if_last_window = true,
       sources = { 'filesystem', 'buffers', 'git_status', 'document_symbols' },
-      default_component_configs = {
-        filesystem = {
+      filesystem = {
+        filtered_items = {
           hide_dotfiles = false,
+          hide_gitignored = false,
           hide_by_name = {
             'node_modules',
+            '.git',
           },
           never_show = {
             '.DS_Store',
           },
-          use_libuv_file_watcher = true,
         },
+        use_libuv_file_watcher = true,
       },
       event_handlers = {
         {

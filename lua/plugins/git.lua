@@ -16,4 +16,32 @@ return {
     },
     opts = {},
   },
+  {
+    'tpope/vim-fugitive',
+    event = 'VeryLazy',
+    keys = {
+      {
+        '<leader>ga',
+        function()
+          vim.cmd.Git 'add .'
+          vim.notify('Files added to git', 'info', { title = 'Fugitive' })
+        end,
+        { desc = '[G]it [A]dd' },
+      },
+      {
+        '<leader>gc',
+        function()
+          vim.cmd.Git 'commit'
+        end,
+        { desc = '[G]it [C]ommit' },
+      },
+      {
+        '<leader>gp',
+        function()
+          vim.cmd.Git 'push'
+        end,
+        { desc = '[G]it [P]ush' },
+      },
+    },
+  },
 }

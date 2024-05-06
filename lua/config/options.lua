@@ -4,6 +4,8 @@
 
 vim.opt.termguicolors = true
 
+vim.opt.timeoutlen = 100
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, for help with jumping.

@@ -17,6 +17,10 @@ return { -- Collection of various small independent plugins/modules
     -- - sr)'  - [S]urround [R]eplace [)] [']
     require('mini.surround').setup()
 
+    -- Toggle comment
+    --
+    -- - gcc - Toggle line comment
+    -- - gc (in Visual Mode) - Toggle comment inside selection
     require('mini.comment').setup {
       mappings = {
         -- comment_line = 'g;',
@@ -28,14 +32,21 @@ return { -- Collection of various small independent plugins/modules
       },
     }
 
-    vim.keymap.set('n', '<leader>up', function()
-      vim.g.minipairs_disable = not vim.g.minipairs_disable
-      if vim.g.minipairs_disable then
-        vim.notify('Disabled auto pairs', 'info')
-      else
-        vim.notify('Enabled auto pairs', 'info')
-      end
-    end, { desc = 'Toggle Autopairs' })
+    require('mini.move').setup {
+      mappings = {
+        -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+        left = '<A-h>',
+        right = '<A-l>',
+        down = '<A-j>',
+        up = '<A-k>',
+
+        -- Move current line in Normal mode
+        line_left = '<A-h>',
+        line_right = '<A-l>',
+        line_down = '<A-j>',
+        line_up = '<A-k>',
+      },
+    }
 
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim

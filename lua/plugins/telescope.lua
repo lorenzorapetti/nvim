@@ -95,6 +95,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       builtin.find_files { hidden = true }
     end, { desc = 'Find All Files (Including Hidden Ones)' })
     vim.keymap.set('n', '<leader><leader>', builtin.git_files, { desc = 'Search Git Files' })
+    vim.keymap.set('n', '<leader>fc', builtin.commands, { desc = 'Search Commands' })
     vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = 'Search Select Telescope' })
     -- Searches for all the occurrences of the word under the cursor
     vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = 'Search current Word' })
@@ -114,7 +115,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     end, { desc = 'Search notification history' })
 
     -- git
-    vim.keymap.set('n', '<leader>gc', '<cmd>Telescope git_commits<cr>', { desc = 'Search Commits' })
+    vim.keymap.set('n', '<leader>gl', '<cmd>Telescope git_commits<cr>', { desc = 'Search Commits ([G]it [L]og)' })
     vim.keymap.set('n', '<leader>gs', '<cmd>Telescope git_status<cr>', { desc = 'Search Git Status' })
 
     -- Slightly advanced example of overriding default behavior and theme

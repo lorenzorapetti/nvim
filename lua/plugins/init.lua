@@ -1,5 +1,7 @@
 -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 return {
+  { 'folke/neodev.nvim', opts = {} },
+
   {
     'nvim-lua/plenary.nvim',
     name = 'plenary',
@@ -74,6 +76,7 @@ return {
     'm4xshen/hardtime.nvim',
     dependencies = { 'MunifTanjim/nui.nvim', 'plenary' },
     opts = {
+      disable_mouse = false,
       restriction_mode = 'hint',
       restricted_keys = {
         ['h'] = {},
