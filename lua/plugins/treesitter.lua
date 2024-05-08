@@ -109,8 +109,21 @@ return {
 
       require('treesitter-context').setup {
         enable = true,
-        max_lines = 1,
+        trim_scope = 'inner',
+        max_lines = 5,
+        multiline_threshold = 1,
       }
+
+      vim.keymap.set('n', '<leader>uc', function()
+        vim.g.disable_treesitter_context = not vim.g.disable_treesitter_context
+        if vim.g.disable_treesitter_context then
+          vim.cmd [[TSContextDisable]]
+          vim.notify('Treesitter Context Disabled', 'info', { title = 'nvim-treesitter' })
+        else
+          vim.cmd [[TSContextEnable]]
+          vim.notify('Treesitter Context Enabled', 'info', { title = 'nvim-treesitter' })
+        end
+      end, { desc = 'Toggle Treesitter Context' })
 
       local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
 
