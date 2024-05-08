@@ -95,6 +95,15 @@ return {
               ['[L'] = { query = '@loop.outer', desc = 'Jump to previous loop end' },
             },
           },
+
+          lsp_interop = {
+            enable = true,
+            border = 'none',
+            peek_definition_code = {
+              ['<leader>df'] = { query = '@function.outer', desc = 'Peek at function definition' },
+              ['<leader>dc'] = { query = '@class.outer', desc = 'Peek at class definition' },
+            },
+          },
         },
       }
 
