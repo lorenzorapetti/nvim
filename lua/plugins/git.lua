@@ -14,7 +14,36 @@ return {
         { desc = 'Toggle Blame' },
       },
     },
-    opts = {},
+    config = function()
+      local gs = require 'gitsigns'
+
+      gs.setup {
+        on_attach = function(bufnr)
+          local function map(mode, l, r, opts)
+            opts = opts or {}
+            opts.buffer = bufnr
+            vim.keymap.set(mode, l, r, opts)
+          end
+
+          -- Navigation
+          map('n', ']h', function()
+            if vim.wo.diff then
+              vim.cmd.normal { ']c', bang = true }
+            else
+              gs.nav_hunk 'next'
+            end
+          end)
+
+          map('n', '[h', function()
+            if vim.wo.diff then
+              vim.cmd.normal { '[c', bang = true }
+            else
+              gs.nav_hunk 'prev'
+            end
+          end)
+        end,
+      }
+    end,
   },
   {
     'tpope/vim-fugitive',
