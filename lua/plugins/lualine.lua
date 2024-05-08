@@ -40,7 +40,7 @@ return {
             fmt = show_macro_recording,
           },
         },
-        lualine_x = { '%=', 'harpoon2' },
+        lualine_x = { '%=', 'harpoon2', 'filetype' },
       },
     }
 
