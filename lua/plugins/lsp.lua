@@ -90,6 +90,8 @@ return { -- LSP Configuration & Plugins
         -- or a suggestion from your LSP for this to activate.
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
+        map('<leader>dd', vim.diagnostic.open_float, 'Show line diagnostics')
+
         -- Opens a popup that displays documentation about the word under your cursor
         --  See `:help K` for why this keymap
         map('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -97,6 +99,10 @@ return { -- LSP Configuration & Plugins
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+
+        map('<leader>uh', function()
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        end, 'Toggle inlay hints')
 
         -- The following two autocommands are used to highlight references of the
         -- word under your cursor when your cursor rests there for a little while.
@@ -186,6 +192,11 @@ return { -- LSP Configuration & Plugins
       },
     }
 
+    -- Setup sourcekit-lsp manually
+    require('lspconfig').sourcekit.setup {
+      capabilities = capabilities,
+    }
+
     -- Ensure the servers and tools above are installed
     --  To check the current status of installed tools and/or manually install
     --  other tools, you can run
@@ -223,6 +234,16 @@ return { -- LSP Configuration & Plugins
       settings = {
         complete_function_calls = true,
         expose_as_code_action = 'all',
+
+        tsserver_file_preferences = {
+          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayParameterNameHints = true,
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayVariableTypeHints = true,
+        },
       },
     }
   end,

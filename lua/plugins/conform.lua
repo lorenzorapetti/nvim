@@ -45,8 +45,11 @@ return { -- Autoformat
       javascriptreact = { 'prettierd' },
       typescript = { 'prettierd' },
       typescriptreact = { 'prettierd' },
+      toml = { 'prettierd' },
 
       c = { 'clang-format' },
+
+      swift = { 'swiftformat' },
     },
   },
   config = function(_, opts)

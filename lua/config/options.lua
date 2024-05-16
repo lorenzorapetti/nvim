@@ -68,3 +68,6 @@ vim.opt.hlsearch = true
 if vim.fn.has 'nvim-0.10' == 1 then
   vim.opt.smoothscroll = true
 end
+
+vim.opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
+vim.cmd [[set grepformat+=%f:%l:%c:%m]]

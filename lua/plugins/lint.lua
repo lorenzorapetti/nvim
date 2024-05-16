@@ -10,6 +10,7 @@ return {
       javascriptreact = { 'eslint_d' },
       typescript = { 'eslint_d' },
       typescriptreact = { 'eslint_d' },
+      swift = { 'swiftlint' },
       -- Use the "*" filetype to run linters on all filetypes.
       -- ['*'] = { 'global linter' },
       -- Use the "_" filetype to run linters on filetypes that don't have other linters configured.
@@ -45,6 +46,10 @@ return {
 
     function M.debounce(ms, fn)
       local timer = vim.uv.new_timer()
+      if timer == nil then
+        return
+      end
+
       return function(...)
         local argv = { ... }
         timer:start(ms, 0, function()
