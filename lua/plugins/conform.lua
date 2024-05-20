@@ -50,6 +50,8 @@ return { -- Autoformat
       c = { 'clang-format' },
 
       swift = { 'swiftformat' },
+
+      go = { 'gofmt' },
     },
   },
   config = function(_, opts)

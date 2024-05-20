@@ -190,6 +190,8 @@ return { -- LSP Configuration & Plugins
           },
         },
       },
+
+      gopls = {},
     }
 
     -- Setup sourcekit-lsp manually
