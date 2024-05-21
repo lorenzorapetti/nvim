@@ -17,21 +17,6 @@ return { -- Collection of various small independent plugins/modules
     -- - sr)'  - [S]urround [R]eplace [)] [']
     require('mini.surround').setup()
 
-    -- Toggle comment
-    --
-    -- - gcc - Toggle line comment
-    -- - gc (in Visual Mode) - Toggle comment inside selection
-    require('mini.comment').setup {
-      mappings = {
-        -- comment_line = 'g;',
-      },
-      options = {
-        custom_commentstring = function()
-          return require('ts_context_commentstring.internal').calculate_commentstring() or vim.bo.commentstring
-        end,
-      },
-    }
-
     require('mini.move').setup {
       mappings = {
         -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
