@@ -49,6 +49,10 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   end,
 })
 
-vim.filetype.get_option = function(filetype, option)
-  return option == 'commentstring' and require('ts_context_commentstring.internal').calculate_commentstring() or vim.filetype.get_option(filetype, option)
-end
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  group = augroup 'hyprland_ft',
+  pattern = { 'hyprland.conf' },
+  callback = function()
+    vim.opt.ft = 'hyprland'
+  end,
+})

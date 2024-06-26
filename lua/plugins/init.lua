@@ -1,6 +1,10 @@
 -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 return {
-  { 'folke/neodev.nvim', opts = {} },
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {},
+  },
 
   {
     'nvim-lua/plenary.nvim',

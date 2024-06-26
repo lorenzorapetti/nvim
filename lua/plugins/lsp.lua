@@ -192,6 +192,8 @@ return { -- LSP Configuration & Plugins
       },
 
       gopls = {},
+
+      standardrb = {},
     }
 
     -- Setup sourcekit-lsp manually
