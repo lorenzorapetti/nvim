@@ -1,7 +1,10 @@
 return {
   'nvim-lualine/lualine.nvim',
   name = 'lualine',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+    'folke/trouble.nvim',
+  },
   init = function()
     vim.g.lualine_laststatus = vim.o.laststatus
     if vim.fn.argc(-1) > 0 then
@@ -23,6 +26,13 @@ return {
     end
 
     local lualine = require 'lualine'
+    local symbols = require('trouble').statusline {
+      mode = 'symbols',
+      groups = {},
+      title = false,
+      filter = { range = true },
+      format = '{kind_icon}{symbol.name:Normal}',
+    }
 
     lualine.setup {
       options = {
@@ -38,6 +48,10 @@ return {
           {
             'macro-recording',
             fmt = show_macro_recording,
+          },
+          {
+            symbols.get,
+            cond = symbols.has,
           },
         },
         lualine_x = { '%=', 'harpoon2', 'filetype' },
