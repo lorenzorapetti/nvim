@@ -13,8 +13,14 @@ return { -- LSP Configuration & Plugins
     {
       'pmizio/typescript-tools.nvim',
     },
+
+    {
+      'folke/neoconf.nvim',
+    },
   },
   config = function()
+    require('neoconf').setup {}
+
     -- Brief Aside: **What is LSP?**
     --
     -- LSP is an acronym you've probably heard, but might not understand what it is.
