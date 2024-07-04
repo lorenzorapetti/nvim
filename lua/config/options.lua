@@ -73,3 +73,6 @@ vim.opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
 vim.cmd [[set grepformat+=%f:%l:%c:%m]]
 
 vim.g.skip_ts_context_commentstring_module = true
+
+-- Prepend mise shims to PATH
+vim.env.PATH = vim.env.HOME .. '/.local/share/mise/shims:' .. vim.env.PATH

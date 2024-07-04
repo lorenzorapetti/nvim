@@ -65,7 +65,7 @@ return {
         { desc = '[G]it [C]ommit' },
       },
       {
-        '<leader>gp',
+        '<leader>gP',
         function()
           vim.cmd.Git 'push'
         end,

@@ -196,10 +196,6 @@ return { -- LSP Configuration & Plugins
           },
         },
       },
-
-      gopls = {},
-
-      standardrb = {},
     }
 
     -- Setup sourcekit-lsp manually
@@ -238,6 +234,16 @@ return { -- LSP Configuration & Plugins
           require('lspconfig')[server_name].setup(server)
         end,
       },
+    }
+
+    local nvim_lsp = require 'lspconfig'
+
+    nvim_lsp.ruby_lsp.setup {
+      init_options = {
+        formatter = false,
+      },
+      single_file_support = false,
+      root_dir = nvim_lsp.util.root_pattern 'Gemfile.lock',
     }
 
     require('typescript-tools').setup {
