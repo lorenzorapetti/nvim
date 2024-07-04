@@ -49,10 +49,11 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
   group = augroup 'hyprland_ft',
-  pattern = { 'hyprland.conf' },
+  pattern = { '*.hl', 'hypr*.conf', '.config/hypr/*.conf' },
   callback = function()
-    vim.opt.ft = 'hyprland'
+    vim.opt.ft = 'hyprlang'
+    require('lspconfig').hyprls.setup {}
   end,
 })
