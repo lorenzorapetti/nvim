@@ -246,6 +246,20 @@ return { -- LSP Configuration & Plugins
       root_dir = nvim_lsp.util.root_pattern 'Gemfile.lock',
     }
 
+    nvim_lsp.eslint.setup {
+      root_dir = nvim_lsp.util.root_pattern(
+        '.eslintrc.js',
+        '.eslintrc.cjs',
+        '.eslintrc.yaml',
+        '.eslintrc.yml',
+        '.eslintrc.json',
+        '.eslintrc.jsonc',
+        'eslint.config.js',
+        'eslint.config.mjs',
+        'eslint.config.cjs'
+      ),
+    }
+
     require('typescript-tools').setup {
       settings = {
         complete_function_calls = true,

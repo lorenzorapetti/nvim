@@ -76,3 +76,5 @@ vim.g.skip_ts_context_commentstring_module = true
 
 -- Prepend mise shims to PATH
 vim.env.PATH = vim.env.HOME .. '/.local/share/mise/shims:' .. vim.env.PATH
+
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

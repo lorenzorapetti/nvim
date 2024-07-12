@@ -6,10 +6,10 @@ return {
     events = { 'BufWritePost', 'BufReadPost', 'InsertLeave' },
     linters_by_ft = {
       fish = { 'fish' },
-      javascript = { 'eslint_d' },
-      javascriptreact = { 'eslint_d' },
-      typescript = { 'eslint_d' },
-      typescriptreact = { 'eslint_d' },
+      javascript = { 'biomejs', 'eslint_d' },
+      javascriptreact = { 'biomejs', 'eslint_d' },
+      typescript = { 'biomejs', 'eslint_d' },
+      typescriptreact = { 'biomejs', 'eslint_d' },
       swift = { 'swiftlint' },
       go = { 'golangcilint' },
       -- Use the "*" filetype to run linters on all filetypes.
@@ -34,6 +34,24 @@ return {
   },
   config = function(_, opts)
     local M = {}
+
+    local root_patterns = {
+      biomejs = {
+        'biome.json',
+        'biome.jsonc',
+      },
+      eslint_d = {
+        '.eslintrc.js',
+        '.eslintrc.cjs',
+        '.eslintrc.yaml',
+        '.eslintrc.yml',
+        '.eslintrc.json',
+        '.eslintrc.jsonc',
+        'eslint.config.js',
+        'eslint.config.mjs',
+        'eslint.config.cjs',
+      },
+    }
 
     local lint = require 'lint'
     for name, linter in pairs(opts.linters) do
@@ -65,7 +83,20 @@ return {
       -- * checks if linters exist for the full filetype first
       -- * otherwise will split filetype by "." and add all those linters
       -- * this differs from conform.nvim which only uses the first filetype that has a formatter
-      local names = lint._resolve_linter_by_ft(vim.bo.filetype)
+      local names = {}
+
+      -- Check if any of the root patterns match a linter
+      for linter, patterns in pairs(root_patterns) do
+        if vim.fs.root(0, patterns) then
+          -- Linter found, exit early
+          table.insert(names, linter)
+          break
+        end
+      end
+
+      if #names == 0 then
+        vim.list_extend(names, lint._resolve_linter_by_ft(vim.bo.filetype))
+      end
 
       -- Create a copy of the names table to avoid modifying the original.
       names = vim.list_extend({}, names)
