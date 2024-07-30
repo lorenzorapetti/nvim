@@ -216,8 +216,6 @@ return { -- LSP Configuration & Plugins
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format lua code
-      'eslint',
-      'prettierd',
       'tailwindcss',
       'rust_analyzer',
     })
@@ -246,19 +244,19 @@ return { -- LSP Configuration & Plugins
       root_dir = nvim_lsp.util.root_pattern 'Gemfile.lock',
     }
 
-    nvim_lsp.eslint.setup {
-      root_dir = nvim_lsp.util.root_pattern(
-        '.eslintrc.js',
-        '.eslintrc.cjs',
-        '.eslintrc.yaml',
-        '.eslintrc.yml',
-        '.eslintrc.json',
-        '.eslintrc.jsonc',
-        'eslint.config.js',
-        'eslint.config.mjs',
-        'eslint.config.cjs'
-      ),
-    }
+    -- nvim_lsp.eslint.setup {
+    --   root_dir = nvim_lsp.util.root_pattern(
+    --     '.eslintrc.js',
+    --     '.eslintrc.cjs',
+    --     '.eslintrc.yaml',
+    --     '.eslintrc.yml',
+    --     '.eslintrc.json',
+    --     '.eslintrc.jsonc',
+    --     'eslint.config.js',
+    --     'eslint.config.mjs',
+    --     'eslint.config.cjs'
+    --   ),
+    -- }
 
     require('typescript-tools').setup {
       settings = {
