@@ -4,6 +4,14 @@
       "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
       "src": "https://github.com/catppuccin/nvim"
     },
+    "codesettings": {
+      "rev": "3c81844f81e9eed53beb3bb348712545c91eec58",
+      "src": "https://github.com/mrjones2014/codesettings.nvim"
+    },
+    "fidget": {
+      "rev": "889e2e96edef4e144965571d46f7a77bcc4d0ddf",
+      "src": "https://github.com/j-hui/fidget.nvim"
+    },
     "mini.icons": {
       "rev": "7fdae2443a0e2910015ca39ad74b50524ee682d3",
       "src": "https://github.com/nvim-mini/mini.icons"
@@ -11,6 +19,10 @@
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "nvim-treesitter-textobjects": {
+      "rev": "851e865342e5a4cb1ae23d31caf6e991e1c99f1e",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
     },
     "snacks": {
       "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",

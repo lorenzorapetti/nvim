@@ -1,4 +1,4 @@
-require('mini.icons').setup({
+require('mini.icons').setup {
   file = {
     ['.keep'] = { glyph = '󰊢', hl = 'MiniIconsGrey' },
     ['devcontainer.json'] = { glyph = '', hl = 'MiniIconsAzure' },
@@ -6,4 +6,4 @@ require('mini.icons').setup({
   filetype = {
     dotenv = { glyph = '', hl = 'MiniIconsYellow' },
   },
-})
+}

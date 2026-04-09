@@ -1,4 +1,4 @@
-local treesitter = require('nvim-treesitter')
+local treesitter = require 'nvim-treesitter'
 
 ---@param buf integer
 ---@param language string
@@ -79,5 +79,5 @@ vim.api.nvim_create_autocmd('PackChanged', {
     if name == 'nvim-treesitter' and kind == 'update' then
       treesitter.update()
     end
-  end
+  end,
 })
