@@ -5,11 +5,16 @@ end
 vim.pack.add({
   { src = gh 'catppuccin/nvim', name = 'catppuccin' },
   { src = gh 'nvim-mini/mini.icons', name = 'mini.icons' },
+  { src = gh 'folke/which-key.nvim', name = 'which-key' },
   { src = gh 'folke/snacks.nvim', name = 'snacks' },
   { src = gh 'nvim-treesitter/nvim-treesitter', name = 'nvim-treesitter' },
   { src = gh 'nvim-treesitter/nvim-treesitter-textobjects', name = 'nvim-treesitter-textobjects' },
   { src = gh 'j-hui/fidget.nvim', name = 'fidget' },
   { src = gh 'mrjones2014/codesettings.nvim', name = 'codesettings' },
+  { src = gh 'stevearc/conform.nvim', name = 'conform' },
+  { src = gh 'nvim-mini/mini.ai', name = 'mini.ai' },
+  { src = gh 'nvim-mini/mini.pairs', name = 'mini.pairs' },
+  { src = gh 'folke/trouble.nvim', name = 'trouble' },
 }, {
   confirm = false,
 })
@@ -25,9 +30,14 @@ vim.g.no_plugin_maps = true
 
 require 'plugins/colorscheme'
 require 'plugins/mini-icons'
+require 'plugins/which-key'
 require 'plugins/snacks'
 require 'plugins/treesitter'
 require 'plugins/treesitter-textobjects'
 require 'plugins/fidget'
 require 'plugins/codesettings'
 require 'plugins/lsp'
+require 'plugins/conform'
+require 'plugins/mini-ai'
+require 'plugins/mini-pairs'
+require 'plugins/trouble'
