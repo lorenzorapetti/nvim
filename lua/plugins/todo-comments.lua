@@ -1,0 +1,16 @@
+require('todo-comments').setup()
+
+Util.keymap.set('n', ']t', function()
+  require('todo-comments').jump_next()
+end, { desc = 'Next Todo Comment' })
+Util.keymap.set('n', '[t', function()
+  require('todo-comments').jump_prev()
+end, { desc = 'Previous Todo Comment' })
+Util.keymap.set('n', '<leader>xt', '<cmd>Trouble todo toggle<cr>', { desc = 'Todo (Trouble)' })
+Util.keymap.set('n', '<leader>xT', '<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>', { desc = 'Todo/Fix/Fixme (Trouble)' })
+Util.keymap.set('n', '<leader>st', function()
+  Snacks.picker.todo_comments()
+end, { desc = 'Todo' })
+Util.keymap.set('n', '<leader>sT', function()
+  Snacks.picker.todo_comments { keywords = { 'TODO', 'FIX', 'FIXME' } }
+end, { desc = 'Todo/Fix/Fixme' })
