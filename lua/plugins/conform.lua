@@ -42,6 +42,7 @@ require('conform').setup {
     lua = { 'stylua' },
     fish = { 'fish_indent' },
     sh = { 'shfmt' },
+    bash = { 'shfmt' },
     nix = { 'alejandra' },
     javascript = js_formatters,
     javascriptreact = js_formatters,
