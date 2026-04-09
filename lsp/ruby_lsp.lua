@@ -23,7 +23,10 @@ return {
     end
   end,
   init_options = {
-    formatter = 'auto',
+    enabledFeatures = {
+      formatting = false
+    },
+    formatter = 'none'
   },
   reuse_client = function(client, config)
     config.cmd_cwd = config.root_dir

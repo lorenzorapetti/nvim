@@ -141,4 +141,6 @@ vim.lsp.enable {
   'eslint',
   'tailwindcss',
   'ruby_lsp',
+  'rubocop',
+  'standardrb'
 }

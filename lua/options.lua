@@ -82,11 +82,3 @@ opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
-vim.filetype.add({
-  pattern = {
-    ['docker-compose%.yml'] = 'yaml.docker-compose',
-    ['docker-compose%.yaml'] = 'yaml.docker-compose',
-    ['compose%.yml'] = 'yaml.docker-compose',
-    ['compose%.yaml'] = 'yaml.docker-compose',
-  },
-})
