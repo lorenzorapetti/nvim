@@ -6,6 +6,8 @@ require('oil').setup {
   keymaps = {
     ['q'] = { 'actions.close', mode = 'n' },
     ['gq'] = { 'actions.send_to_qflist', opts = { action = 'r' }, mode = 'n' },
+    ['-'] = { 'actions.parent', mode = 'n' },
+    ['gp'] = { 'actions.preview', mode = 'n' },
   },
   float = {
     max_width = 0.7,
