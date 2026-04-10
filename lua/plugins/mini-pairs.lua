@@ -8,5 +8,12 @@ require('mini.pairs').setup {
   -- and there are more closing pairs than opening pairs
   skip_unbalanced = true,
   -- better deal with markdown code blocks
-  markdown = true,
+  markdown = false,
 }
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'rust',
+  callback = function()
+    vim.keymap.set('i', "'", "'", { buffer = 0 })
+  end,
+})

@@ -41,6 +41,8 @@ vim.pack.add({
   { src = gh 'folke/todo-comments.nvim', name = 'todo-comments' },
   { src = gh 'folke/ts-comments.nvim', name = 'ts-comments' },
   { src = gh 'stevearc/overseer.nvim', name = 'overseer' },
+  { src = gh 'zbirenbaum/copilot.lua', name = 'copilot' },
+  { src = gh 'folke/sidekick.nvim', name = 'sidekick' },
 }, {
   confirm = false,
 })
@@ -81,6 +83,8 @@ require 'plugins/render-markdown'
 require 'plugins/todo-comments'
 require 'plugins/ts-comments'
 require 'plugins/overseer'
+require 'plugins/copilot'
+require 'plugins/sidekick'
 require 'plugins/which-key'
 
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#1E1E2E', fg = '#89B4FA', force = true })
