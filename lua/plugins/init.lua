@@ -31,7 +31,7 @@ vim.pack.add({
   { src = gh 'nvim-mini/mini.surround', name = 'mini.surround' },
   { src = gh 'folke/trouble.nvim', name = 'trouble' },
   { src = gh 'lewis6991/gitsigns.nvim', name = 'gitsigns' },
-  { src = gh 'yorickpeterse/nvim-jump', name = 'nvim-jump' },
+  { src = gh 'folke/flash.nvim', name = 'flash' },
   { src = gh 'MagicDuck/grug-far.nvim', name = 'grug-far' },
   { src = gh 'rachartier/tiny-cmdline.nvim', name = 'tiny-cmdline' },
   { src = gh 'theprimeagen/harpoon', name = 'harpoon', version = 'harpoon2' },
@@ -73,7 +73,7 @@ require 'plugins/mini-pairs'
 require 'plugins/mini-surround'
 require 'plugins/trouble'
 require 'plugins/gitsigns'
-require 'plugins/jump'
+require 'plugins/flash'
 require 'plugins/grug-far'
 require 'plugins/tiny-cmdline'
 require 'plugins/harpoon'
