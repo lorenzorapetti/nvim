@@ -41,6 +41,7 @@ vim.pack.add({
   { src = gh 'folke/todo-comments.nvim', name = 'todo-comments' },
   { src = gh 'folke/ts-comments.nvim', name = 'ts-comments' },
   { src = gh 'stevearc/overseer.nvim', name = 'overseer' },
+  { src = gh 'stevearc/oil.nvim', name = 'oil' },
   { src = gh 'zbirenbaum/copilot.lua', name = 'copilot' },
   { src = gh 'folke/sidekick.nvim', name = 'sidekick' },
 }, {
@@ -83,6 +84,7 @@ require 'plugins/render-markdown'
 require 'plugins/todo-comments'
 require 'plugins/ts-comments'
 require 'plugins/overseer'
+require 'plugins/oil'
 require 'plugins/copilot'
 require 'plugins/sidekick'
 require 'plugins/which-key'

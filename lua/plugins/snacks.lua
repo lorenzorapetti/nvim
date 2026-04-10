@@ -12,7 +12,7 @@ Snacks.setup {
   indent = { enabled = false },
   explorer = {
     enabled = true,
-    replace_netrw = false,
+    replace_netrw = true,
   },
   notifier = {},
   picker = {
