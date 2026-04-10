@@ -26,3 +26,19 @@ Same with language servers:
 ```sh
 pacman -S stylua shfmt
 ```
+
+## AI
+
+I use sidekick.nvim to interact with AI CLIs. I also use copilot.lua for inline suggestions.
+
+You can login to Copilot with:
+
+```sh
+:Copilot auth
+```
+
+Then install your preferred AI CLI. I use `opencode`:
+
+```sh
+pacman -S opencode
+```
