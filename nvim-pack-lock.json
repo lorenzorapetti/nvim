@@ -28,10 +28,6 @@
       "rev": "0f536967abd097d9a4275087483f15d012418740",
       "src": "https://github.com/saecki/crates.nvim"
     },
-    "fidget": {
-      "rev": "889e2e96edef4e144965571d46f7a77bcc4d0ddf",
-      "src": "https://github.com/j-hui/fidget.nvim"
-    },
     "gitsigns": {
       "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"

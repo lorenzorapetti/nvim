@@ -22,7 +22,6 @@ vim.pack.add({
   { src = gh 'nvim-lualine/lualine.nvim', name = 'lualine' },
   { src = gh 'saghen/blink.cmp', name = 'blink.cmp' },
   { src = gh 'xzbdmw/colorful-menu.nvim', name = 'colorful-menu' },
-  { src = gh 'j-hui/fidget.nvim', name = 'fidget' },
   { src = gh 'mrjones2014/codesettings.nvim', name = 'codesettings' },
   { src = gh 'stevearc/conform.nvim', name = 'conform' },
   { src = gh 'mrcjkb/rustaceanvim', name = 'rustaceanvim' },
@@ -64,7 +63,6 @@ require 'plugins/treesitter'
 require 'plugins/treesitter-textobjects'
 require 'plugins/lualine'
 require 'plugins/blink'
-require 'plugins/fidget'
 require 'plugins/codesettings'
 require 'plugins/lsp'
 require 'plugins/conform'
@@ -90,4 +88,5 @@ require 'plugins/sidekick'
 require 'plugins/which-key'
 
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#1E1E2E', fg = '#89B4FA', force = true })
+vim.api.nvim_set_hl(0, 'PopupNormal', { bg = '#1E1E2E' })
 vim.api.nvim_set_hl(0, 'SnacksPickerBorder', { bg = '#181825', fg = '#89B4FA', force = true })
