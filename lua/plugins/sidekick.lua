@@ -1,3 +1,5 @@
+vim.g.sidekick_nes = false
+
 require('sidekick').setup()
 
 Util.keymap.set('n', '<leader>aa', function()
