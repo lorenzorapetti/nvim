@@ -9,7 +9,7 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "codesettings": {
-      "rev": "3c81844f81e9eed53beb3bb348712545c91eec58",
+      "rev": "9e1ae26a8ae3e0a2fcefc0eb82a0fe955af5e21d",
       "src": "https://github.com/mrjones2014/codesettings.nvim"
     },
     "colorful-menu": {
@@ -37,7 +37,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far": {
-      "rev": "37d0eafc6a2dcf8641aa19fc2a8db5e391b7f16b",
+      "rev": "b08a9f8d0602fdf075262e8e1b6dc776b3966003",
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "harpoon": {
@@ -86,7 +86,7 @@
       "src": "https://github.com/folke/persistence.nvim"
     },
     "plenary": {
-      "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "render-markdown": {
@@ -94,7 +94,7 @@
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "rustaceanvim": {
-      "rev": "ae5004a1e2bbcef18f55f5e2c150307b6fc1b9d6",
+      "rev": "3eca3979c37a55f39119631bbd8a472ea622fc0c",
       "src": "https://github.com/mrcjkb/rustaceanvim"
     },
     "sidekick": {
@@ -106,7 +106,7 @@
       "src": "https://github.com/folke/snacks.nvim"
     },
     "tiny-cmdline": {
-      "rev": "01519b13230d549380cee405c12062738240a11b",
+      "rev": "807d23bcb7cdf26da9e92c5ea5299e7f0d07383d",
       "src": "https://github.com/rachartier/tiny-cmdline.nvim"
     },
     "todo-comments": {
