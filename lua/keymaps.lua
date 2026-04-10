@@ -111,7 +111,13 @@ map('n', '[e', diagnostic_goto(false, 'ERROR'), { desc = 'Prev Error' })
 map('n', ']w', diagnostic_goto(true, 'WARN'), { desc = 'Next Warning' })
 map('n', '[w', diagnostic_goto(false, 'WARN'), { desc = 'Prev Warning' })
 
+-- Quit and Restart
 map('n', '<leader>q', '<cmd>qa<cr>', { desc = 'Quit All' })
+map('n', '<leader>R', function()
+  local session = vim.fn.stdpath 'state' .. '/restart_session.vim'
+  vim.cmd('mksession! ' .. vim.fn.fnameescape(session))
+  vim.cmd('restart source ' .. vim.fn.fnameescape(session))
+end, { desc = 'Restart Neovim' })
 
 -- Yank
 map({ 'n', 'x' }, '<leader>p', '"0p', { desc = 'Paste from the last yank' })
