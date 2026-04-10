@@ -82,3 +82,6 @@ require 'plugins/todo-comments'
 require 'plugins/ts-comments'
 require 'plugins/overseer'
 require 'plugins/which-key'
+
+vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#1E1E2E', fg = '#89B4FA', force = true })
+vim.api.nvim_set_hl(0, 'SnacksPickerBorder', { bg = '#181825', fg = '#89B4FA', force = true })
