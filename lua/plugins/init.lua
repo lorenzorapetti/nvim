@@ -40,6 +40,7 @@ vim.pack.add({
   { src = gh 'MeanderingProgrammer/render-markdown.nvim', name = 'render-markdown' },
   { src = gh 'folke/todo-comments.nvim', name = 'todo-comments' },
   { src = gh 'folke/ts-comments.nvim', name = 'ts-comments' },
+  { src = gh 'stevearc/overseer.nvim', name = 'overseer' },
 }, {
   confirm = false,
 })
@@ -79,4 +80,5 @@ require 'plugins/persistence'
 require 'plugins/render-markdown'
 require 'plugins/todo-comments'
 require 'plugins/ts-comments'
+require 'plugins/overseer'
 require 'plugins/which-key'
