@@ -109,6 +109,10 @@
       "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
       "src": "https://github.com/folke/snacks.nvim"
     },
+    "splitjoin": {
+      "rev": "f8459afc57bf73ec84bce4aea7e400d04199c635",
+      "src": "https://github.com/bennypowers/splitjoin.nvim"
+    },
     "tiny-cmdline": {
       "rev": "807d23bcb7cdf26da9e92c5ea5299e7f0d07383d",
       "src": "https://github.com/rachartier/tiny-cmdline.nvim"

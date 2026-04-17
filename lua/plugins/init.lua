@@ -44,6 +44,7 @@ vim.pack.add({
   { src = gh 'stevearc/oil.nvim', name = 'oil' },
   { src = gh 'zbirenbaum/copilot.lua', name = 'copilot' },
   { src = gh 'folke/sidekick.nvim', name = 'sidekick' },
+  { src = gh 'bennypowers/splitjoin.nvim', name = 'splitjoin' },
 }, {
   confirm = false,
 })
@@ -87,6 +88,7 @@ require 'plugins/overseer'
 require 'plugins/oil'
 require 'plugins/copilot'
 require 'plugins/sidekick'
+require 'plugins/splitjoin'
 require 'plugins/which-key'
 
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#1E1E2E', fg = '#89B4FA', force = true })
