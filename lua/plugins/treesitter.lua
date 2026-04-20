@@ -71,13 +71,3 @@ local parsers = {
   'nix',
 }
 treesitter.install(parsers)
-
-vim.api.nvim_create_autocmd('PackChanged', {
-  callback = function(ev)
-    local name, kind = ev.data.spec.name, ev.data.kind
-
-    if name == 'nvim-treesitter' and kind == 'update' then
-      treesitter.update()
-    end
-  end,
-})
