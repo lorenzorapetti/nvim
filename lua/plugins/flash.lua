@@ -19,3 +19,11 @@ end, { desc = 'Flash Treesitter' })
 Util.keymap.set('o', 'r', function()
   require('flash').remote()
 end, { desc = 'Remote Flash' })
+Util.keymap.set({ 'n', 'x', 'o' }, '<c-space>', function()
+  require('flash').treesitter {
+    actions = {
+      ['<c-space>'] = 'next',
+      ['<BS>'] = 'prev',
+    },
+  }
+end, { desc = 'Treesitter incremental selection' })
