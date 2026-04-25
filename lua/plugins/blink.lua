@@ -1,6 +1,9 @@
+local cmp = require 'blink.cmp'
+
 require('colorful-menu').setup()
 
-require('blink-cmp').setup {
+cmp.build():wait(60000)
+cmp.setup {
   snippets = {
     preset = 'default',
   },
@@ -49,10 +52,7 @@ require('blink-cmp').setup {
   },
 
   fuzzy = {
-    implementation = 'prefer_rust_with_warning',
-    prebuilt_binaries = {
-      force_version = 'v*',
-    },
+    implementation = 'rust',
   },
 
   keymap = {

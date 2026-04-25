@@ -21,6 +21,7 @@ vim.pack.add({
   { src = gh 'nvim-treesitter/nvim-treesitter-textobjects', name = 'nvim-treesitter-textobjects' },
   { src = gh 'dmtrKovalenko/fff.nvim', name = 'fff.nvim' },
   { src = gh 'nvim-lualine/lualine.nvim', name = 'lualine' },
+  { src = gh 'saghen/blink.lib', name = 'blink.lib' },
   { src = gh 'saghen/blink.cmp', name = 'blink.cmp' },
   { src = gh 'xzbdmw/colorful-menu.nvim', name = 'colorful-menu' },
   { src = gh 'j-hui/fidget.nvim', name = 'fidget' },
