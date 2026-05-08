@@ -44,7 +44,7 @@ return {
     -- We fallback to the current working directory if no project root is found
     local project_root = vim.fs.root(bufnr, root_markers) or vim.fn.getcwd()
 
-    if vim.fn.executable(project_root .. '/node_modules/.bin/biome') ~= 1 or vim.fn.executable('biome') ~= 1 then
+    if vim.fn.executable(project_root .. '/node_modules/.bin/biome') ~= 1 and vim.fn.executable 'biome' ~= 1 then
       return
     end
 
