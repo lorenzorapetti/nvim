@@ -24,7 +24,7 @@ vim.pack.add({
   { src = gh 'saghen/blink.lib', name = 'blink.lib' },
   { src = gh 'saghen/blink.cmp', name = 'blink.cmp' },
   { src = gh 'xzbdmw/colorful-menu.nvim', name = 'colorful-menu' },
-  { src = gh 'j-hui/fidget.nvim', name = 'fidget' },
+  -- { src = gh 'j-hui/fidget.nvim', name = 'fidget' },
   { src = gh 'mrjones2014/codesettings.nvim', name = 'codesettings' },
   { src = gh 'stevearc/conform.nvim', name = 'conform' },
   { src = gh 'mrcjkb/rustaceanvim', name = 'rustaceanvim' },
@@ -36,7 +36,7 @@ vim.pack.add({
   { src = gh 'lewis6991/gitsigns.nvim', name = 'gitsigns' },
   { src = gh 'folke/flash.nvim', name = 'flash' },
   { src = gh 'MagicDuck/grug-far.nvim', name = 'grug-far' },
-  { src = gh 'rachartier/tiny-cmdline.nvim', name = 'tiny-cmdline' },
+  -- { src = gh 'rachartier/tiny-cmdline.nvim', name = 'tiny-cmdline' },
   { src = gh 'theprimeagen/harpoon', name = 'harpoon', version = 'harpoon2' },
   { src = gh 'folke/persistence.nvim', name = 'persistence' },
   { src = gh 'MeanderingProgrammer/render-markdown.nvim', name = 'render-markdown' },
@@ -68,7 +68,7 @@ require 'plugins/treesitter-textobjects'
 require 'plugins/fff'
 require 'plugins/lualine'
 require 'plugins/blink'
-require 'plugins/fidget'
+-- require 'plugins/fidget'
 require 'plugins/codesettings'
 require 'plugins/lsp'
 require 'plugins/conform'
@@ -81,7 +81,7 @@ require 'plugins/trouble'
 require 'plugins/gitsigns'
 require 'plugins/flash'
 require 'plugins/grug-far'
-require 'plugins/tiny-cmdline'
+-- require 'plugins/tiny-cmdline'
 require 'plugins/harpoon'
 require 'plugins/persistence'
 require 'plugins/render-markdown'
