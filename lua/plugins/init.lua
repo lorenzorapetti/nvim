@@ -19,7 +19,7 @@ vim.pack.add({
   { src = gh 'folke/snacks.nvim', name = 'snacks' },
   { src = gh 'nvim-treesitter/nvim-treesitter', name = 'nvim-treesitter' },
   { src = gh 'nvim-treesitter/nvim-treesitter-textobjects', name = 'nvim-treesitter-textobjects' },
-  { src = gh 'dmtrKovalenko/fff.nvim', name = 'fff.nvim' },
+  -- { src = gh 'dmtrKovalenko/fff.nvim', name = 'fff.nvim' },
   { src = gh 'nvim-lualine/lualine.nvim', name = 'lualine' },
   { src = gh 'saghen/blink.lib', name = 'blink.lib' },
   { src = gh 'saghen/blink.cmp', name = 'blink.cmp' },
@@ -65,7 +65,7 @@ require 'plugins/mini-icons'
 require 'plugins/snacks'
 require 'plugins/treesitter'
 require 'plugins/treesitter-textobjects'
-require 'plugins/fff'
+-- require 'plugins/fff'
 require 'plugins/lualine'
 require 'plugins/blink'
 -- require 'plugins/fidget'
