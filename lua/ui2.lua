@@ -6,6 +6,7 @@ local msgs = require 'vim._core.ui2.messages'
 local IGNORED_KINDS = {
   bufwrite = true,
   [''] = true,
+  empty = true,
 }
 
 local SKIP_PATTERNS = {
@@ -14,12 +15,7 @@ local SKIP_PATTERNS = {
   '; before #%d+',
   '%d fewer lines',
   '%d more lines',
-}
-
-local DIALOG_KINDS = {
-  confirm = true,
-  confirm_sub = true,
-  list_cmd = true, -- swapfile and similar interactive list prompts (not fully sure, can also be progress)
+  '%d lines yanked',
 }
 
 local KIND_TITLES = {
@@ -107,7 +103,6 @@ local function override_msg_win()
     title = last_title and { { last_title, last_hl } } or nil,
     title_pos = last_title and 'center' or nil,
   })
-  vim.api.nvim_set_option_value('winhighlight', 'Normal:PopupNormal', { win = win })
 end
 
 local function override_pager_win()
@@ -126,7 +121,24 @@ local function override_pager_win()
     title = last_title and { { last_title, last_hl } } or nil,
     title_pos = last_title and 'center' or nil,
   })
-  vim.api.nvim_set_option_value('winhighlight', 'Normal:PopupNormal', { win = win })
+end
+
+local function override_dialog_win()
+  local win = ui2.wins and ui2.wins.dialog
+  if not (win and vim.api.nvim_win_is_valid(win)) then
+    return
+  end
+  if vim.api.nvim_win_get_config(win).hide then
+    return
+  end
+  local height = vim.api.nvim_win_get_height(win)
+  pcall(vim.api.nvim_win_set_config, win, {
+    border = 'rounded',
+    height = height,
+    style = 'minimal',
+    title = last_title and { { last_title, last_hl } } or nil,
+    title_pos = last_title and 'center' or nil,
+  })
 end
 
 -- ── ui2 enable ──────────────────────────────────────────────────────
@@ -145,9 +157,10 @@ ui2.enable {
       wmsg = 'msg',
       completion = 'msg',
       confirm = 'dialog',
+      confirm_sub = 'dialog',
       echoerr = 'msg',
       emsg = 'msg',
-      list_cmd = 'msg',
+      list_cmd = 'pager',
       lua_error = 'msg',
       lua_print = 'msg',
       progress = 'msg',
@@ -159,12 +172,12 @@ ui2.enable {
       shell_err = 'msg',
       shell_out = 'msg',
       typed_cmd = 'msg',
-      verbose = 'msg',
+      verbose = 'pager',
       wildlist = 'msg',
     },
-    cmd = { height = 0.6 },
+    cmd = { height = 0.5 },
     dialog = { height = 0.5 },
-    msg = { height = 0.3, timeout = 2000 },
+    msg = { height = 0.5, timeout = 2000 },
     pager = { height = 0.8 },
   },
 }
@@ -181,6 +194,11 @@ msgs.set_pos = function(tgt)
   end
   if tgt == 'pager' then
     override_pager_win()
+    return
+  end
+
+  if tgt == 'dialog' then
+    override_dialog_win()
   end
 end
 
@@ -194,12 +212,22 @@ msgs.msg_show = function(kind, content, replace_last, history, append, id, trigg
   end
   local title, hl = resolve_title(kind, content)
   last_title, last_hl = title, hl
-  orig_msg_show(kind, content, replace_last, history, append, id, trigger)
+  -- orig_msg_show(kind, content, replace_last, history, append, id, trigger)
+
+  local tgt = ui2.cfg.msg.targets[kind] or (trigger ~= '' and ui2.cfg.msg.targets[trigger]) or ui2.cfg.msg.targets[trigger] or ui2.cfg.msg.target
+
+  msgs.show_msg(tgt, kind, content, replace_last, append, id)
+  msgs.set_pos(tgt)
 end
 
 local orig_show_msg = msgs.show_msg
 msgs.show_msg = function(tgt, kind, content, replace_last, append, id)
-  if tgt == 'msg' and not DIALOG_KINDS[kind] then
+  -- local debug_chunk = { 0, ('[%s:%s] '):format(tgt, kind), 0 }
+  -- local debug_content = { debug_chunk }
+  -- for _, chunk in ipairs(content) do
+  --     debug_content[#debug_content + 1] = chunk
+  -- end
+  if tgt == 'msg' then
     local text = content_to_text(content)
     local width = 0
     for _, line in ipairs(vim.split(text, '\n')) do
@@ -208,11 +236,38 @@ msgs.show_msg = function(tgt, kind, content, replace_last, append, id)
     local lines = #vim.split(text, '\n')
     if width > math.floor(vim.o.columns * 0.75) or lines > 20 then
       vim.schedule(function()
+        -- msgs.show_msg('pager', kind, debug_content, replace_last, append, id)
         msgs.show_msg('pager', kind, content, replace_last, append, id)
         msgs.set_pos 'pager'
       end)
       return
     end
   end
+  -- orig_show_msg(tgt, kind, debug_content, replace_last, append, id)
   orig_show_msg(tgt, kind, content, replace_last, append, id)
 end
+
+-- ── LSP progress ─────────────────────────────────────────────────────
+
+local id = { LspProgressMessages = vim.api.nvim_create_augroup('LspProgressMessages', { clear = true }) }
+
+vim.api.nvim_create_autocmd('LspProgress', {
+  group = id.LspProgressMessages,
+  callback = function(ev)
+    local value = ev.data.params.value
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if not client then
+      return
+    end
+    local is_end = value.kind == 'end'
+    local msg = value.message and (client.name .. ': ' .. value.message) or (client.name .. (is_end and ': done' or ''))
+    vim.api.nvim_echo({ { msg } }, false, {
+      id = 'lsp.' .. ev.data.client_id,
+      kind = 'progress',
+      source = 'vim.lsp',
+      title = value.title,
+      status = is_end and 'success' or 'running',
+      percent = value.percentage,
+    })
+  end,
+})
