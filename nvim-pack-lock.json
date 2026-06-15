@@ -32,6 +32,10 @@
       "rev": "694357861ec9ebf12475ddcdd04ea45a0923c32d",
       "src": "https://github.com/saecki/crates.nvim"
     },
+    "diffs": {
+      "rev": "1258be1f75607f218ebf9ddbdce855ebb8253c9e",
+      "src": "https://github.com/barrettruth/diffs.nvim"
+    },
     "fff.nvim": {
       "rev": "ec57eb02a679737dbf4f88520a0a79cc62eb1664",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"

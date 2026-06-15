@@ -11,6 +11,8 @@ else
   vim.o.laststatus = 0
 end
 
+require 'plugins/diffs'
+
 vim.pack.add({
   { src = gh 'catppuccin/nvim', name = 'catppuccin' },
   { src = gh 'nvim-lua/plenary.nvim', name = 'plenary' },
@@ -47,6 +49,7 @@ vim.pack.add({
   { src = gh 'zbirenbaum/copilot.lua', name = 'copilot' },
   { src = gh 'folke/sidekick.nvim', name = 'sidekick' },
   { src = gh 'bennypowers/splitjoin.nvim', name = 'splitjoin' },
+  { src = gh 'barrettruth/diffs.nvim', name = 'diffs' },
 }, {
   confirm = false,
 })
