@@ -166,6 +166,12 @@ if vim.fn.executable 'lazygit' == 1 then
   end, { desc = 'Lazygit (cwd)' })
 end
 
+if vim.fn.executable 'tuxedo' == 1 then
+  map('n', '<leader>gt', function()
+    Snacks.terminal('tuxedo', { cwd = Util.root.git() })
+  end)
+end
+
 map('n', '<leader>gL', function()
   Snacks.picker.git_log()
 end, { desc = 'Git Log (cwd)' })
