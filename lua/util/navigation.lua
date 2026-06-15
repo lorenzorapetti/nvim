@@ -11,16 +11,56 @@
 
 local M = {}
 
-local mappings = { h = 'left', j = 'bottom', k = 'top', l = 'right' }
+local wezterm_dirs = { h = 'Left', j = 'Down', k = 'Up', l = 'Right' }
+local kitty_dirs = { h = 'left', j = 'bottom', k = 'top', l = 'right' }
+
+local function wezterm_cli_move(direction)
+  vim.fn.system('wezterm cli activate-pane-direction ' .. wezterm_dirs[direction])
+end
+
+local function kitty_cli_move(direction)
+  vim.fn.system('kitty @ kitten navigate_kitty.py ' .. kitty_dirs[direction])
+end
+
+local function is_wezterm()
+  local term = vim.trim((vim.env.TERM_PROGRAM or ''):lower())
+  return term == 'wezterm'
+end
+
+local function is_kitty()
+  local term = vim.trim((vim.env.TERM_PROGRAM or ''):lower())
+  return term == 'kitty'
+end
+
+local function setup_user_var()
+  if is_wezterm() then
+    vim.api.nvim_create_autocmd({ 'VimEnter', 'VimResume' }, {
+      callback = function()
+        local stdout = vim.loop.new_tty(1, false)
+        stdout:write('\027]1337;SetUserVar=IS_NVIM=' .. vim.base64.encode 'true' .. '\007')
+        stdout:close()
+      end,
+    })
+    vim.api.nvim_create_autocmd({ 'VimLeave', 'VimSuspend' }, {
+      callback = function()
+        local stdout = vim.loop.new_tty(1, false)
+        stdout:write '\027]1337;SetUserVar=IS_NVIM=\007'
+        stdout:close()
+      end,
+    })
+  end
+end
 
 function M.navigate(direction)
   local left_win = vim.fn.winnr('1' .. direction)
   if vim.fn.winnr() ~= left_win then
     vim.api.nvim_command('wincmd ' .. direction)
   else
-    -- TODO: Support other terminals
-    local command = 'kitty @ kitten navigate_kitty.py ' .. mappings[direction]
-    vim.fn.system(command)
+    if is_wezterm() then
+      wezterm_cli_move(direction)
+    elseif is_kitty() then
+      kitty_cli_move(direction)
+    end
   end
 end
 
@@ -43,6 +83,8 @@ end
 ---@param options Options
 function M.setup(options)
   local keybindings = options.keybindings or {}
+
+  setup_user_var()
 
   vim.keymap.set('n', keybindings.left or '<C-h>', M.navigateLeft, { silent = true })
   vim.keymap.set('n', keybindings.right or '<C-l>', M.navigateRight, { silent = true })
