@@ -13,6 +13,7 @@ local M = {}
 
 local wezterm_dirs = { h = 'Left', j = 'Down', k = 'Up', l = 'Right' }
 local kitty_dirs = { h = 'left', j = 'bottom', k = 'top', l = 'right' }
+local zellij_dirs = { h = 'left', j = 'down', k = 'up', l = 'right' }
 
 local function wezterm_cli_move(direction)
   vim.fn.system('wezterm cli activate-pane-direction ' .. wezterm_dirs[direction])
@@ -20,6 +21,10 @@ end
 
 local function kitty_cli_move(direction)
   vim.fn.system('kitty @ kitten navigate_kitty.py ' .. kitty_dirs[direction])
+end
+
+local function zellij_cli_move(direction)
+  vim.fn.system('zellij action move-focus ' .. zellij_dirs[direction])
 end
 
 local function is_wezterm()
@@ -30,6 +35,10 @@ end
 local function is_kitty()
   local term = vim.trim((vim.env.TERM_PROGRAM or ''):lower())
   return term == 'kitty'
+end
+
+local function is_zellij()
+  return (vim.env.ZELLIJ or '') ~= ''
 end
 
 local function setup_user_var()
@@ -60,6 +69,8 @@ function M.navigate(direction)
       wezterm_cli_move(direction)
     elseif is_kitty() then
       kitty_cli_move(direction)
+    elseif is_zellij() then
+      zellij_cli_move(direction)
     end
   end
 end
