@@ -1,3 +1,6 @@
+-- Enable faster startup by caching compiled Lua modules
+vim.loader.enable()
+
 Util = require 'util'
 
 require 'options'
