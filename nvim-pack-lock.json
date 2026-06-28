@@ -13,7 +13,7 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "codesettings": {
-      "rev": "ff62c7460699d3d6adb835d9a0946ccece9292a7",
+      "rev": "b6be2caea677af140090472fd05f2a2d5e0b56fe",
       "src": "https://github.com/mrjones2014/codesettings.nvim"
     },
     "colorful-menu": {
@@ -77,6 +77,10 @@
       "rev": "ecec4fa9c0c1cb767b5c83c5351e252725dd582a",
       "src": "https://github.com/simifalaye/minibuffer.nvim"
     },
+    "nvim-jump": {
+      "rev": "f58eb5a36c414c19965e1c4d5dfb74d5a1f21ede",
+      "src": "https://github.com/yorickpeterse/nvim-jump"
+    },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -106,7 +110,7 @@
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "rustaceanvim": {
-      "rev": "58df5e6355f332b24920767e13400a6c79d5af77",
+      "rev": "4db27c89017ee0b53d2ec3dbaa4948efe7bd2bdf",
       "src": "https://github.com/mrcjkb/rustaceanvim"
     },
     "sidekick": {
