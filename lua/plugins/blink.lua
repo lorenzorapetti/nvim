@@ -2,7 +2,7 @@ local cmp = require 'blink.cmp'
 
 require('colorful-menu').setup()
 
-cmp.build():wait(60000)
+cmp.build():pwait()
 cmp.setup {
   snippets = {
     preset = 'default',
@@ -14,6 +14,22 @@ cmp.setup {
     nerd_font_variant = 'mono',
 
     kind_icons = Util.icons.kinds,
+  },
+
+  cmdline = {
+    keymap = {
+      preset = 'inherit',
+      ['<Tab>'] = { 'show', 'accept' },
+    },
+    completion = {
+      menu = {
+        auto_show = function(ctx)
+          return vim.fn.getcmdtype() == ':'
+          -- enable for inputs as well, with:
+          -- or vim.fn.getcmdtype() == '@'
+        end,
+      },
+    },
   },
 
   completion = {
